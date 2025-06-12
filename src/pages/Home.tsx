@@ -619,47 +619,62 @@ export const Home = (): JSX.Element => {
   </div>
 </section>
 
-      {/* Call to Action Section */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div 
-            className="bg-[#dc3545] rounded-[30px] p-12 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            {/* Left Content */}
-            <div className="flex-1 text-white z-10">
-              <h2 className="text-4xl md:text-5xl font-black mb-4">
-                Something needs to be repaired?<br />
-                Call Us Now!
-              </h2>
-              <div className="flex flex-col sm:flex-row gap-6 mt-8">
-                <Link to="/contact">
-                  <Button className="bg-white text-[#dc3545] hover:bg-gray-100 px-8 py-4 rounded-full font-bold shadow-lg">
-                    Request Service Now →
-                  </Button>
-                </Link>
-                <a href="tel:+16048052105" className="flex items-center gap-3 text-white">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                    <span className="text-xl">📞</span>
-                  </div>
-                  <span className="text-xl font-bold">+1 (604) 805-2105</span>
-                </a>
+{/* Call to Action Section */}
+<section className="relative py-16 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4">
+    <motion.div 
+      className="bg-[#dc3545] rounded-[30px] relative overflow-visible min-h-[280px]"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <div className="relative">
+        {/* Left Content */}
+        <div className="text-white z-10 p-12 lg:pl-16 lg:pr-[400px]">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+            Something needs to be repaired?<br />
+            Call Us Now!
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+            <Link to="/contact">
+              <motion.button 
+                className="bg-white text-[#dc3545] hover:bg-gray-100 px-8 py-4 rounded-full font-semibold shadow-lg transition-all flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Request Service Now
+                <span>→</span>
+              </motion.button>
+            </Link>
+            <a href="tel:+16048052105" className="flex items-center gap-3 text-white hover:opacity-90 transition-opacity">
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#dc3545]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                </svg>
               </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="flex-1 relative mt-8 lg:mt-0">
-              <img
-                src="/cta-plumber.png"
-                alt="Professional plumber ready to help"
-                className="rounded-[20px] w-full max-w-[400px] ml-auto"
-              />
-            </div>
-          </motion.div>
+              <span className="text-xl font-semibold">+1 (604) 805-2105</span>
+            </a>
+          </div>
         </div>
-      </section>
+
+        {/* Right Image - Popping out */}
+        <motion.div 
+          className="absolute right-0 -bottom-10 lg:-bottom-20 w-[300px] lg:w-[450px] h-[350px] lg:h-[450px]"
+          initial={{ opacity: 0, x: 50, y: -30 }}
+          whileInView={{ opacity: 1, x: 0, y: -30 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <img
+            src="https://rooterx.ca/assets/img/index/service-man.png"
+            alt="Professional plumber ready to help"
+            className="w-full h-full object-contain drop-shadow-2xl"
+          />
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>
+</section>
     </div>
   );
 };
