@@ -10,23 +10,29 @@ export const Home = (): JSX.Element => {
 
   return (
     <div className="font-['Satoshi',system-ui,-apple-system,'Segoe_UI',Roboto,'Helvetica_Neue',Arial,sans-serif]">
-     {/* Hero Section - Updated to match the image */}
+ {/* Hero Section - No background, properly sized image */}
 <section className="relative w-full mt-4 mb-8">
   <div className="max-w-[1400px] mx-auto px-4">
-    <div className="relative bg-[#2B5F75] rounded-[40px] overflow-hidden min-h-[400px]">
-      {/* Red accent shapes */}
-      <div className="absolute bottom-0 left-[40%] w-[400px] h-[400px] bg-[#dc3545] rounded-full -mb-[200px] opacity-90 blur-2xl"></div>
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#dc3545] rounded-full -mt-[150px] -mr-[100px] opacity-90 blur-2xl"></div>
+    <div className="relative rounded-[40px] overflow-hidden min-h-[500px]">
+      {/* Hero image as background */}
+      <img
+        src="https://rooterx.ca/assets/img/index/slide-1.png"
+        alt="Professional plumber at work"
+        className="absolute inset-0 w-full h-full object-cover rounded-[40px]"
+      />
       
-      <div className="relative z-10 flex items-center min-h-[400px]">
-        {/* Left Content */}
+      {/* Gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent rounded-[40px]"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 flex items-center min-h-[500px]">
         <motion.div
-          className="flex-1 p-12 lg:pl-16 lg:pr-8"
+          className="p-12 lg:pl-16 lg:pr-8 max-w-[600px]"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8 leading-[1.1] max-w-[600px]">
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8 leading-[1.1]">
             RooterX Plumbing — Prompt, Reliable, and Local Plumbing Solutions.
           </h1>
           
@@ -43,215 +49,279 @@ export const Home = (): JSX.Element => {
             </motion.div>
           </Link>
         </motion.div>
-
-        {/* Right Image Container */}
-        <motion.div 
-          className="hidden lg:block relative w-[700px] h-[400px] mr-8"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="absolute inset-0 rounded-[30px] overflow-hidden">
-            <img
-              src="/medium-shot-man-posing-studio-2.png"
-              alt="Professional plumber at work"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </motion.div>
       </div>
     </div>
   </div>
 </section>
 
-      {/* About Section */}
-      <section className="max-w-7xl mx-auto py-20 px-4">
-        <motion.h2 
-          className="text-4xl md:text-5xl font-black text-center mb-16 text-[#212529]"
-          initial={{ opacity: 0, y: 20 }}
+{/* About Section - Consistent image sizing */}
+<section className="py-16">
+  <div className="max-w-[1200px] mx-auto px-4">
+    <motion.h2 
+      className="text-3xl lg:text-4xl font-black text-center mb-12 text-[#212529]"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      Most Reliable Plumbing Service in Toronto
+    </motion.h2>
+
+    <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+      {/* Image with accent - Consistent size */}
+      <motion.div 
+        className="relative w-full lg:w-[500px]"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <div className="absolute -top-3 -left-3 w-full h-full border-t-4 border-l-4 border-[#dc3545] rounded-tl-[20px]" />
+        <img
+          src="https://rooterx.ca/assets/img/index/about.png"
+          alt="Professional plumber at work"
+          className="relative rounded-[20px] shadow-xl w-full h-[350px] object-cover"
+        />
+      </motion.div>
+
+      {/* About Content */}
+      <motion.div 
+        className="flex-1"
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <h3 className="text-2xl font-black mb-4 text-[#212529]">
+          About RooterX Plumbing and Drain inc.
+        </h3>
+        <p className="text-base leading-relaxed text-[#6c757d] mb-4">
+          RooterX Plumbing is a leading provider of comprehensive plumbing services in the Greater
+          Toronto Area. As one of the most trusted plumbing companies serving Brampton,
+          Mississauga, Caledon, Vaughan, Etobicoke, Toronto, North York, Georgetown, and
+          Oakville, we pride ourselves on our commitment to quality and reliability.
+        </p>
+        <p className="text-base leading-relaxed text-[#6c757d]">
+          Our team of licensed plumbers is dedicated to delivering exceptional plumbing repair and maintenance
+          —from routine fixes to emergency services. When you search for a "plumber near me" or
+          "plumbers close to me," you'll find that our local expertise and transparent pricing set us
+          apart.
+        </p>
+      </motion.div>
+    </div>
+
+    {/* Mission Card */}
+    <motion.div 
+      className="bg-white rounded-[20px] border-2 border-[#2B5F75] p-8 shadow-lg max-w-[1000px] mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ type: "spring", stiffness: 100 }}
+    >
+      <h3 className="text-2xl font-black mb-4 text-[#212529]">Our Mission</h3>
+      <p className="text-base text-[#6c757d] leading-relaxed">
+        Our mission is to provide superior plumbing services that ensure the safety, comfort, and efficiency of your home or business. 
+        Whether you need immediate plumbing repair or scheduled maintenance, we're the "near me plumber" you can rely on for prompt, 
+        professional service. At RooterX Plumbing, our customer-first approach, advanced techniques, and commitment to excellence 
+        make us the preferred choice for all your "plumbing services near me" needs. Experience the difference with RooterX Plumbing—
+        where every repair, installation, and maintenance project is handled with utmost precision and care.
+      </p>
+    </motion.div>
+  </div>
+</section>
+
+{/* Why Choose Us Section - Consistent image sizing */}
+<section className="py-16 bg-[#f8f9fa]">
+  <div className="max-w-[1200px] mx-auto px-4">
+    <div className="flex flex-col lg:flex-row items-center gap-12">
+      <motion.div 
+        className="flex-1"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl lg:text-4xl font-black mb-8 text-[#212529]">
+          Why Choose RooterX Plumbing and drain inc.?
+        </h2>
+        <ul className="space-y-3">
+          {[
+            { icon: "🔧", title: "Local Expertise", desc: "Deeply rooted in the GTA, we understand the unique plumbing challenges of our communities." },
+            { icon: "✅", title: "Licensed & Insured", desc: "Our fully certified professionals ensure quality workmanship and safety on every job." },
+            { icon: "💰", title: "Transparent Pricing", desc: "Enjoy clear, upfront quotes with no hidden fees—what you see is what you pay." },
+            { icon: "📞", title: "24/7 Emergency Response", desc: "Plumbing emergencies don't wait, and neither do we. We're ready to assist around the clock." },
+            { icon: "🚀", title: "Advanced Technology", desc: "We employ state-of-the-art tools and techniques to deliver efficient and lasting solutions." },
+            { icon: "⚙️", title: "Quality Craftsmanship", desc: "Our commitment to excellence ensures every repair or installation is done right the first time." },
+            { icon: "🤝", title: "Customer-Centric Service", desc: "We prioritize your satisfaction, building long-lasting relationships through reliable and courteous service." }
+          ].map((item, index) => (
+            <motion.li 
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="flex items-start"
+            >
+              <span className="text-2xl mr-4">{item.icon}</span>
+              <div>
+                <span className="font-bold text-[#212529]">{item.title}:</span>
+                <span className="text-[#6c757d] ml-2">{item.desc}</span>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
+
+      {/* Image with consistent size */}
+      <motion.div 
+        className="relative w-full lg:w-[500px]"
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <Parallax speed={5}>
+          <div className="absolute -top-4 -right-4 w-full h-full border-t-4 border-r-4 border-[#dc3545] rounded-tr-[20px]" />
+          <img
+            src="https://rooterx.ca/assets/img/index/icon/choose.png"
+            alt="Why choose RooterX Plumbing"
+            className="relative rounded-[20px] shadow-xl w-full h-[350px] object-cover"
+          />
+        </Parallax>
+      </motion.div>
+    </div>
+  </div>
+</section>
+{/* Services Section - Updated with subtle icon animations */}
+<section className="bg-[#2B7EB5] py-20">
+  <div className="max-w-7xl mx-auto px-4">
+    <motion.h2 
+      className="text-4xl md:text-5xl font-black text-white text-center mb-16"
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      Know About Our Plumbing Services
+    </motion.h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      {[
+        {
+          name: "Tap Repair",
+          description: "Our tap repair stops drips swiftly, restoring flawless water flow in minutes.",
+          image: "https://rooterx.ca/assets/img/index/services1.png",
+          icon: "https://rooterx.ca/assets/img/index/icon/ico-service-1.png"
+        },
+        {
+          name: "Shower Repair",
+          description: "Our shower repair restores full functionality and efficiency in every shower.",
+          image: "https://rooterx.ca/assets/img/index/services2.png",
+          icon: "https://rooterx.ca/assets/img/index/icon/ico-service-2.png"
+        },
+        {
+          name: "Frozen Pipes",
+          description: "Our service for frozen pipes safely thaws and repairs to prevent costly damage.",
+          image: "https://rooterx.ca/assets/img/index/services3.png",
+          icon: "https://rooterx.ca/assets/img/index/icon/ico-service-3.png"
+        },
+        {
+          name: "Sink Repair",
+          description: "Our sink repair clears clogs and stops leaks, restoring your sink's performance.",
+          image: "https://rooterx.ca/assets/img/index/services4.png",
+          icon: "https://rooterx.ca/assets/img/index/icon/ico-service-4.png"
+        }
+      ].map((service, index) => (
+        <motion.div
+          key={index}
+          className="relative"
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ delay: index * 0.15, duration: 0.6 }}
         >
-          Most Reliable Plumbing Service in Toronto
-        </motion.h2>
-
-        <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
-          {/* Image with accent */}
-          <motion.div 
-            className="relative flex-1"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          {/* Card Container */}
+          <motion.div
+            className="bg-white rounded-[20px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group relative"
+            whileHover={{ y: -10 }}
           >
-            <Parallax speed={-5}>
-              <div className="absolute -top-4 -left-4 w-full h-full border-t-4 border-l-4 border-[#dc3545] rounded-tl-[20px]" />
-              <img
-                src="/about-plumber1.png"
-                alt="Professional plumber at work"
-                className="relative rounded-[20px] shadow-xl w-full max-w-[500px] h-[350px] object-cover"
+            {/* Service Image */}
+            <div className="relative h-48 overflow-hidden">
+              <motion.img
+                src={service.image}
+                alt={service.name}
+                className="w-full h-full object-cover"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.4 }}
               />
-            </Parallax>
-          </motion.div>
+            </div>
 
-          {/* About Content */}
-          <motion.div 
-            className="flex-1"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-3xl font-black mb-6 text-[#212529]">
-              About RooterX Plumbing and Drain inc.
-            </h3>
-            <p className="text-lg leading-relaxed text-[#6c757d] mb-6">
-              RooterX Plumbing is a leading provider of comprehensive plumbing services in the Greater
-              Toronto Area. As one of the most trusted plumbing companies serving Brampton,
-              Mississauga, Caledon, Vaughan, Etobicoke, Toronto, North York, Georgetown, and
-              Oakville, we pride ourselves on our commitment to quality and reliability.
-            </p>
-            <p className="text-lg leading-relaxed text-[#6c757d]">
-              Our team of licensed plumbers is dedicated to delivering exceptional plumbing repair and maintenance
-              —from routine fixes to emergency services. When you search for a "plumber near me" or
-              "plumbers close to me," you'll find that our local expertise and transparent pricing set us
-              apart.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Mission Card */}
-        <motion.div 
-          className="bg-white rounded-[24px] border-2 border-[#0d6efd] p-10 shadow-lg max-w-5xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 100 }}
-        >
-          <h3 className="text-3xl font-black mb-6 text-[#212529]">Our Mission</h3>
-          <p className="text-lg text-[#6c757d] leading-relaxed">
-            Our mission is to provide superior plumbing services that ensure the safety, comfort, and efficiency of your home or business. 
-            Whether you need immediate plumbing repair or scheduled maintenance, we're the "near me plumber" you can rely on for prompt, 
-            professional service. At RooterX Plumbing, our customer-first approach, advanced techniques, and commitment to excellence 
-            make us the preferred choice for all your "plumbing services near me" needs.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="bg-[#f8f9fa] py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
-              className="flex-1"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-black mb-8 text-[#212529]">
-                Why Choose RooterX Plumbing and drain inc.?
-              </h2>
-              <ul className="space-y-4 text-lg">
-                {[
-                  { icon: "🔧", title: "Local Expertise", desc: "Deeply rooted in the GTA, we understand the unique plumbing challenges of our communities." },
-                  { icon: "✅", title: "Licensed & Insured", desc: "Our fully certified professionals ensure quality workmanship and safety on every job." },
-                  { icon: "💰", title: "Transparent Pricing", desc: "Enjoy clear, upfront quotes with no hidden fees—what you see is what you pay." },
-                  { icon: "📞", title: "24/7 Emergency Response", desc: "Plumbing emergencies don't wait, and neither do we. We're ready to assist around the clock." },
-                  { icon: "🚀", title: "Advanced Technology", desc: "We employ state-of-the-art tools and techniques to deliver efficient and lasting solutions." },
-                  { icon: "⚙️", title: "Quality Craftsmanship", desc: "Our commitment to excellence ensures every repair or installation is done right the first time." },
-                  { icon: "🤝", title: "Customer-Centric Service", desc: "We prioritize your satisfaction, building long-lasting relationships through reliable service." }
-                ].map((item, index) => (
-                  <motion.li 
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start"
-                  >
-                    <span className="text-2xl mr-4">{item.icon}</span>
-                    <div>
-                      <span className="font-bold text-[#212529]">{item.title}:</span>
-                      <span className="text-[#6c757d] ml-2">{item.desc}</span>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div 
-              className="relative flex-1"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Parallax speed={5}>
-                <div className="absolute -top-4 -right-4 w-full h-full border-t-4 border-r-4 border-[#dc3545] rounded-tr-[20px]" />
-                <img
-                  src="/about-plumber2.png"
-                  alt="Plumber working"
-                  className="relative rounded-[20px] shadow-xl w-full max-w-[500px] h-[400px] object-cover"
-                />
-              </Parallax>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="bg-[#0d6efd] py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-black text-white text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Know About Our Plumbing Services
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {content.services.serviceList.slice(0, 4).map((service, index) => (
+            {/* Service Content */}
+            <div className="p-6 pt-10">
+              <h3 className="text-xl font-bold text-[#212529] mb-3">{service.name}</h3>
+              <p className="text-[#6c757d] text-sm mb-4 leading-relaxed">{service.description}</p>
+              
               <motion.div
-                key={index}
-                className="bg-white rounded-[20px] p-6 shadow-xl hover:shadow-2xl transition-shadow relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.15 + 0.4 }}
               >
-                <div className="absolute -top-6 left-6 w-12 h-12 bg-[#dc3545] rounded-full flex items-center justify-center">
-                  <span className="text-white text-2xl">🔧</span>
-                </div>
-                
-                {service.image && (
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="w-full h-40 object-cover rounded-[12px] mb-4 mt-4"
-                  />
-                )}
-                
-                <h3 className="text-xl font-bold text-[#212529] mb-3">{service.name}</h3>
-                <p className="text-[#6c757d] mb-4 text-sm">{service.description}</p>
                 <Link 
                   to="/services" 
-                  className="text-[#dc3545] font-bold hover:underline inline-flex items-center"
+                  className="text-[#dc3545] font-bold hover:text-[#bb2d3b] inline-flex items-center gap-1 group"
                 >
-                  Learn More <span className="ml-1">→</span>
+                  Learn More
+                  <motion.span
+                    className="inline-block"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    →
+                  </motion.span>
                 </Link>
               </motion.div>
-            ))}
-          </div>
+            </div>
+          </motion.div>
 
-          <div className="text-center">
-            <Link to="/services">
-              <Button className="bg-[#dc3545] hover:bg-[#bb2d3b] text-white px-10 py-4 rounded-full text-lg font-bold shadow-lg">
-                View All Services
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+          {/* Icon Badge - Subtle fade in animation */}
+          <motion.div 
+            className="absolute left-6 top-[168px] w-16 h-16 bg-[#dc3545] rounded-full flex items-center justify-center shadow-lg p-3 z-10"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ 
+              delay: index * 0.15 + 0.3, 
+              duration: 0.5,
+              ease: "easeOut"
+            }}
+          >
+            <img 
+              src={service.icon} 
+              alt={`${service.name} icon`}
+              className="w-full h-full object-contain filter brightness-0 invert"
+            />
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
 
+    {/* View All Services Button */}
+    <motion.div 
+      className="text-center"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.6 }}
+    >
+      <Link to="/services">
+        <motion.button
+          className="bg-[#dc3545] hover:bg-[#bb2d3b] text-white px-10 py-4 rounded-full text-lg font-bold shadow-lg transition-all"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          View All Services
+        </motion.button>
+      </Link>
+    </motion.div>
+  </div>
+</section>
       {/* FAQ Section */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4">
@@ -408,111 +478,117 @@ export const Home = (): JSX.Element => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Left: Character Image */}
-            <motion.div 
-              className="flex-1 relative"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative rounded-[30px] overflow-hidden shadow-2xl">
-                <img
-                  src="/plumber-character.png"
-                  alt="RooterX Plumber Character"
-                  className="w-full h-[600px] object-cover"
+{/* Contact Form Section */}
+<section className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="bg-white rounded-[30px] shadow-2xl overflow-hidden">
+      <div className="flex flex-col lg:flex-row">
+        {/* Left: Character Image with background */}
+        <motion.div 
+          className="lg:w-1/2 bg-[#2B5F75] relative"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="h-full min-h-[600px] flex items-center justify-center p-8">
+            <img
+              src="https://rooterx.ca/assets/img/index/contact-us.png"
+              alt="RooterX Plumber Character"
+              className="max-w-[400px] w-full"
+            />
+          </div>
+        </motion.div>
+
+        {/* Right: Contact Form */}
+        <motion.div 
+          className="lg:w-1/2 p-10 lg:p-12"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl font-bold mb-4 text-[#1a4d66]">Contact Us!</h2>
+          <p className="text-gray-600 mb-8 text-base">
+            A member of our team will be in touch shortly to confirm your contact details or address questions you may have.
+          </p>
+
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">First name</label>
+                <input
+                  type="text"
+                  placeholder="Enter First Name"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
                 />
               </div>
-            </motion.div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Last name</label>
+                <input
+                  type="text"
+                  placeholder="Last First Name"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
+                />
+              </div>
+            </div>
 
-            {/* Right: Contact Form */}
-            <motion.div 
-              className="flex-1 bg-white rounded-[30px] shadow-xl p-10"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-black mb-4 text-[#212529]">Contact Us!</h2>
-              <p className="text-[#6c757d] mb-8">
-                A member of our team will be in touch shortly to confirm your contact details or address questions you may have.
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                <input
+                  type="tel"
+                  placeholder="Enter Phone Number"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input
+                  type="email"
+                  placeholder="Enter Email"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
+                />
+              </div>
+            </div>
 
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-[#212529] mb-2">First name</label>
-                    <input
-                      type="text"
-                      placeholder="Enter First Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d6efd] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#212529] mb-2">Last name</label>
-                    <input
-                      type="text"
-                      placeholder="Last First Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d6efd] focus:border-transparent"
-                    />
-                  </div>
-                </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
+              <select className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50">
+                <option>Select Service Type</option>
+                <option>Emergency Plumbing</option>
+                <option>Drain Cleaning</option>
+                <option>Water Heater Repair</option>
+                <option>Leak Detection</option>
+                <option>Commercial Service</option>
+              </select>
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-[#212529] mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      placeholder="Enter Phone Number"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d6efd] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-[#212529] mb-2">Email</label>
-                    <input
-                      type="email"
-                      placeholder="Enter Email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d6efd] focus:border-transparent"
-                    />
-                  </div>
-                </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">How can we help you?</label>
+              <textarea
+                placeholder="Type here..."
+                rows={4}
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent resize-none bg-gray-50"
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">Service Type</label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d6efd] focus:border-transparent">
-                    <option>Select Service Type</option>
-                    <option>Emergency Plumbing</option>
-                    <option>Drain Cleaning</option>
-                    <option>Water Heater Repair</option>
-                    <option>Leak Detection</option>
-                    <option>Commercial Service</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-[#212529] mb-2">How can we help you?</label>
-                  <textarea
-                    placeholder="Type here..."
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0d6efd] focus:border-transparent resize-none"
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-[#dc3545] hover:bg-[#bb2d3b] text-white py-4 rounded-full font-bold text-lg shadow-lg transition-all"
-                >
-                  Send Message
-                </motion.button>
-              </form>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+            <div className="flex justify-end">
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-12 py-4 bg-[#dc3545] hover:bg-[#bb2d3b] text-white rounded-full font-bold text-lg shadow-lg transition-all"
+              >
+                Send Message
+              </motion.button>
+            </div>
+          </form>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Call to Action Section */}
       <section className="relative py-16 overflow-hidden">

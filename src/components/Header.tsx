@@ -68,9 +68,9 @@ export const Header = (): JSX.Element => {
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <img
-                className="h-16"
+                className="h-16 w-auto"
                 alt="RooterX Plumbing Logo"
-                src="/rooterx-logo.png"
+                src="https://rooterx.ca/assets/img/logo.png"
               />
             </Link>
 
