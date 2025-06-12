@@ -548,36 +548,58 @@ export const Home = (): JSX.Element => {
 };
 
 // FAQ Item Component
-const FAQItem = ({ question, answer, defaultOpen = false }: { question: string; answer: string; defaultOpen?: boolean }) => {
+const FAQItem = ({
+  question,
+  answer,
+  defaultOpen = false,
+}: {
+  question: string;
+  answer: string;
+  defaultOpen?: boolean;
+}) => {
   const [isOpen, setIsOpen] = React.useState(defaultOpen);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm transition-all">
       <button
-        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full px-6 py-4 text-left flex items-center justify-between transition-colors rounded-xl ${
+          isOpen ? "bg-gray-50" : "hover:bg-gray-50"
+        }`}
+        onClick={() => setIsOpen((o) => !o)}
       >
-        <span className={`text-lg font-medium ${isOpen ? 'text-[#dc3545]' : 'text-[#212529]'}`}>
+        <span
+          className={`text-lg font-semibold transition-colors ${
+            isOpen ? "text-[#dc3545]" : "text-[#212529]"
+          }`}
+        >
           {question}
         </span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="text-xl text-gray-500"
+          className="text-2xl text-gray-400"
         >
-          ▼
+          {/* Chevron Down SVG */}
+          <svg width="1em" height="1em" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M6 8l4 4 4-4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </motion.span>
       </button>
-      
       <motion.div
         initial={false}
         animate={{
-          height: isOpen ? "auto" : 0,
-          opacity: isOpen ? 1 : 0
+          maxHeight: isOpen ? 500 : 0,
+          opacity: isOpen ? 1 : 0,
         }}
         transition={{
-          height: { duration: 0.3 },
-          opacity: { duration: 0.2 }
+          maxHeight: { duration: 0.3 },
+          opacity: { duration: 0.2 },
         }}
         className="overflow-hidden"
       >
