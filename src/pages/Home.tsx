@@ -477,50 +477,63 @@ export const Home = (): JSX.Element => {
           </div>
         </div>
       </section>
-
 {/* Contact Form Section */}
 <section className="py-20 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4">
-    <div className="bg-white rounded-[30px] shadow-2xl overflow-hidden">
-      <div className="flex flex-col lg:flex-row">
-        {/* Left: Character Image with background */}
-        <motion.div 
-          className="lg:w-1/2 bg-[#2B5F75] relative"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="h-full min-h-[600px] flex items-center justify-center p-8">
-            <img
-              src="https://rooterx.ca/assets/img/index/contact-us.png"
-              alt="RooterX Plumber Character"
-              className="max-w-[400px] w-full"
-            />
-          </div>
-        </motion.div>
+  <div className="max-w-6xl mx-auto px-4">
+    <motion.div 
+      className="relative rounded-[30px] shadow-2xl overflow-hidden min-h-[700px]"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      {/* Full Background with Character and Plumbing Tools */}
+      <div className="absolute inset-0">
+        {/* Plumber Character fills the background */}
+        <img
+          src="https://rooterx.ca/assets/img/index/contact-us.png"
+          alt="RooterX Plumber Character"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ zIndex: 1 }}
+        />
+        {/* Dark overlay with plumbing tools effect */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, #1a4d66 0%, #2B7EB5 100%)',
+            zIndex: 2,
+            opacity: 0.85
+          }}
+        />
+        {/* Decorative elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-xl" style={{ zIndex: 3 }} />
+        <div className="absolute bottom-20 right-40 w-40 h-40 bg-white/5 rounded-full blur-xl" style={{ zIndex: 3 }} />
+        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-xl" style={{ zIndex: 3 }} />
+      </div>
 
-        {/* Right: Contact Form */}
+      {/* Form Container - Floating on top */}
+      <div className="relative z-10 flex items-center justify-end min-h-[700px] p-8 lg:p-12">
         <motion.div 
-          className="lg:w-1/2 p-10 lg:p-12"
+          className="bg-white/95 backdrop-blur-md rounded-[25px] shadow-2xl p-8 lg:p-10 w-full max-w-[600px] ml-auto lg:mr-8"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold mb-4 text-[#1a4d66]">Contact Us!</h2>
           <p className="text-gray-600 mb-8 text-base">
             A member of our team will be in touch shortly to confirm your contact details or address questions you may have.
           </p>
 
-          <form className="space-y-6">
+          <form className="space-y-5">
+            {/* Name Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">First name</label>
                 <input
                   type="text"
                   placeholder="Enter First Name"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-[#2B7EB5] transition-all outline-none bg-white"
                 />
               </div>
               <div>
@@ -528,57 +541,73 @@ export const Home = (): JSX.Element => {
                 <input
                   type="text"
                   placeholder="Last First Name"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-[#2B7EB5] transition-all outline-none bg-white"
                 />
               </div>
             </div>
 
+            {/* Phone and Email */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                <input
-                  type="tel"
-                  placeholder="Enter Phone Number"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
-                />
+                <div className="relative">
+                  <input
+                    type="tel"
+                    placeholder="Enter Phone Number"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-[#2B7EB5] transition-all outline-none bg-white"
+                  />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    ☎
+                  </span>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <input
                   type="email"
                   placeholder="Enter Email"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-[#2B7EB5] transition-all outline-none bg-white"
                 />
               </div>
             </div>
 
+            {/* Service Type */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
-              <select className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent bg-gray-50">
-                <option>Select Service Type</option>
-                <option>Emergency Plumbing</option>
-                <option>Drain Cleaning</option>
-                <option>Water Heater Repair</option>
-                <option>Leak Detection</option>
-                <option>Commercial Service</option>
-              </select>
+              <div className="relative">
+                <select className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-[#2B7EB5] transition-all outline-none appearance-none bg-white">
+                  <option>Select Service Type</option>
+                  <option>Emergency Plumbing</option>
+                  <option>Drain Cleaning</option>
+                  <option>Water Heater Repair</option>
+                  <option>Leak Detection</option>
+                  <option>Commercial Service</option>
+                  <option>Residential Service</option>
+                  <option>Other</option>
+                </select>
+                <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
             </div>
 
+            {/* Message */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">How can we help you?</label>
               <textarea
                 placeholder="Type here..."
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-transparent resize-none bg-gray-50"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2B7EB5] focus:border-[#2B7EB5] resize-none transition-all outline-none bg-white"
               />
             </div>
 
-            <div className="flex justify-end">
+            {/* Submit Button */}
+            <div className="flex justify-end pt-4">
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-12 py-4 bg-[#dc3545] hover:bg-[#bb2d3b] text-white rounded-full font-bold text-lg shadow-lg transition-all"
+                className="px-10 py-3.5 bg-[#dc3545] hover:bg-[#bb2d3b] text-white rounded-full font-semibold text-lg shadow-lg transition-all"
               >
                 Send Message
               </motion.button>
@@ -586,7 +615,7 @@ export const Home = (): JSX.Element => {
           </form>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   </div>
 </section>
 
