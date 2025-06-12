@@ -10,47 +10,59 @@ export const Home = (): JSX.Element => {
 
   return (
     <div className="font-['Satoshi',system-ui,-apple-system,'Segoe_UI',Roboto,'Helvetica_Neue',Arial,sans-serif]">
-      {/* Hero Section with background image style */}
-      <section 
-        className="relative w-full h-[516px] rounded-[30px] overflow-hidden flex items-center justify-center text-white mx-4 md:mx-auto max-w-7xl mt-4"
-        style={{
-          backgroundImage: "url('/medium-shot-man-posing-studio-2.png')",
-          backgroundSize: "100% 100%",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(20,99,137,0.9)] to-[rgba(20,99,137,0.7)] rounded-[30px]" />
-        
-        {/* Hero Content */}
+     {/* Hero Section - Updated to match the image */}
+<section className="relative w-full mt-4 mb-8">
+  <div className="max-w-[1400px] mx-auto px-4">
+    <div className="relative bg-[#2B5F75] rounded-[40px] overflow-hidden min-h-[400px]">
+      {/* Red accent shapes */}
+      <div className="absolute bottom-0 left-[40%] w-[400px] h-[400px] bg-[#dc3545] rounded-full -mb-[200px] opacity-90 blur-2xl"></div>
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#dc3545] rounded-full -mt-[150px] -mr-[100px] opacity-90 blur-2xl"></div>
+      
+      <div className="relative z-10 flex items-center min-h-[400px]">
+        {/* Left Content */}
         <motion.div
-          className="relative z-10 max-w-7xl mx-auto px-8 text-center md:text-left"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="flex-1 p-12 lg:pl-16 lg:pr-8"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-            {content.hero.title}
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8 leading-[1.1] max-w-[600px]">
+            RooterX Plumbing — Prompt, Reliable, and Local Plumbing Solutions.
           </h1>
           
-          <p className="text-xl md:text-2xl font-medium text-white mb-8 max-w-2xl">
-            {content.hero.subtitle}
-          </p>
-
           <Link to="/contact">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="inline-block"
             >
-              <Button className="px-12 py-4 bg-[#dc3545] hover:bg-[#bb2d3b] text-white rounded-full text-lg font-bold shadow-lg transition-all">
-                {content.hero.buttonText}
-                <span className="ml-2">→</span>
+              <Button className="px-8 py-4 bg-[#dc3545] hover:bg-[#bb2d3b] text-white rounded-full text-lg font-bold shadow-lg transition-all flex items-center gap-2">
+                Call Us Now
+                <span className="ml-1">→</span>
               </Button>
             </motion.div>
           </Link>
         </motion.div>
-      </section>
+
+        {/* Right Image Container */}
+        <motion.div 
+          className="hidden lg:block relative w-[700px] h-[400px] mr-8"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <div className="absolute inset-0 rounded-[30px] overflow-hidden">
+            <img
+              src="/medium-shot-man-posing-studio-2.png"
+              alt="Professional plumber at work"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* About Section */}
       <section className="max-w-7xl mx-auto py-20 px-4">
