@@ -479,7 +479,7 @@ export const Home = (): JSX.Element => {
       </section>
 {/* Contact Form Section */}
 <section className="py-20 bg-gray-50">
-  <div className="max-w-6xl mx-auto px-4">
+  <div className="max-w-8xl mx-auto px-4">
     <motion.div 
       className="relative rounded-[30px] shadow-2xl overflow-hidden min-h-[700px]"
       initial={{ opacity: 0, y: 30 }}
