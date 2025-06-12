@@ -1,9 +1,11 @@
-import React from "react";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Parallax } from "react-scroll-parallax";
 import { Button } from "../components/ui/button";
 import { useContent } from "../contexts/ContentContext";
-import { motion } from "framer-motion";
-import { Parallax } from "react-scroll-parallax";
+import CustomerReviews from "../components/ui/customerReview";
+
 
 export const Home = (): JSX.Element => {
   const { content } = useContent();
@@ -393,90 +395,8 @@ export const Home = (): JSX.Element => {
       </section>
 
       {/* Customer Reviews Section */}
-      <section className="bg-[#e8f4f8] py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.h2 
-            className="text-4xl font-black text-center mb-16 text-[#212529]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Customer Reviews
-          </motion.h2>
-
-          {/* Reviews Carousel */}
-          <div className="relative">
-            <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4">
-              {[
-                {
-                  name: "Jack Smith",
-                  location: "Toronto, Canada",
-                  review: "I needed urgent plumbing repair and after searching for plumbers near me, I found RooterX Plumbing—they delivered exceptional plumbing services with speed and professionalism.",
-                  rating: 5,
-                  image: "/avatar1.jpg"
-                },
-                {
-                  name: "Jack Smith",
-                  location: "Toronto, Canada",
-                  review: "When my sink started leaking, I contacted RooterX Plumbing, one of the top plumbing companies in the area, and their plumbing services near me truly exceeded my expectations.",
-                  rating: 5,
-                  image: "/avatar2.jpg"
-                },
-                {
-                  name: "Jack Smith",
-                  location: "Toronto, Canada",
-                  review: "RooterX Plumbing proved to be the best plumber I've worked with; their team was prompt, reliable, and ensured every plumbing repair was handled with expert care.",
-                  rating: 5,
-                  image: "/avatar3.jpg"
-                }
-              ].map((review, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white rounded-[20px] p-8 min-w-[350px] shadow-lg relative snap-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {/* Quote icon */}
-                  <div className="absolute -top-4 -left-4 w-16 h-16 bg-[#ffebeb] rounded-full flex items-center justify-center">
-                    <span className="text-3xl text-[#dc3545]">"</span>
-                  </div>
-
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-[#ffc107] text-xl">★</span>
-                    ))}
-                  </div>
-
-                  {/* Review text */}
-                  <p className="text-[#6c757d] mb-6 italic">"{review.review}"</p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
-                    <div>
-                      <p className="font-bold text-[#212529]">{review.name}</p>
-                      <p className="text-sm text-[#6c757d]">{review.location}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Navigation arrows */}
-            <div className="flex justify-center gap-4 mt-8">
-              <button className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50">
-                ←
-              </button>
-              <button className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50">
-                →
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+<CustomerReviews/>
+      
 {/* Contact Form Section */}
 <section className="py-20 bg-gray-50">
   <div className="max-w-8xl mx-auto px-4">
