@@ -65,10 +65,10 @@ export const Header = (): JSX.Element => {
                   <NavigationMenuLink asChild>
                     <Link
                       to={item.path}
-                      className={`font-['Satoshi-${
-                        location.pathname === item.path ? "Black" : "Bold"
-                      }',Helvetica] ${
-                        location.pathname === item.path ? "text-[#2585b8]" : "text-black"
+                      className={`${
+                        location.pathname === item.path 
+                          ? "font-['Satoshi-Black',Helvetica] font-black text-[#2585b8]" 
+                          : "font-['Satoshi-Bold',Helvetica] font-bold text-black"
                       } text-lg tracking-[0] leading-[normal] hover:text-[#2585b8] transition-colors`}
                     >
                       {item.label}
@@ -81,9 +81,13 @@ export const Header = (): JSX.Element => {
 
           {/* Contact Button */}
           <Link to="/contact">
-            <Button className="w-52 h-[60px] bg-[#ee1c32] rounded-[70px] font-['Satoshi-Black',Helvetica] font-black text-white text-xl hover:bg-[#d91828] transition-colors relative">
-              <span className="ml-[25px]">Contact Us</span>
-              <div className="absolute w-[50px] h-[50px] top-[5px] right-[5px] bg-white rounded-[30px]" />
+            <Button className="relative w-52 h-[60px] bg-[#ee1c32] rounded-[70px] hover:bg-[#d91828] transition-colors overflow-hidden group">
+              <span className="font-['Satoshi-Black',Helvetica] font-black text-white text-xl relative z-10 pr-14">
+                Contact Us
+              </span>
+              <div className="absolute w-[50px] h-[50px] top-[5px] right-[5px] bg-white rounded-full flex items-center justify-center">
+                <span className="text-[#ee1c32] font-bold text-2xl">→</span>
+              </div>
             </Button>
           </Link>
         </div>
